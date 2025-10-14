@@ -1,6 +1,3 @@
-# streamlit_app.py
-# Streamlit app for clustering on synthetic datasets
-
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -11,7 +8,6 @@ from sklearn.cluster import KMeans, DBSCAN, AgglomerativeClustering
 from sklearn.metrics import silhouette_score
 import plotly.express as px
 
-# Optionally import hdbscan
 try:
     import hdbscan
     HDBSCAN_AVAILABLE = True
@@ -147,29 +143,3 @@ st.plotly_chart(fig, use_container_width=True)
 if st.checkbox("Show data table"):
     st.dataframe(df_vis.head(1000))
 
-# st.markdown("## Notes")
-# st.markdown("""
-# - Use different scalers to see sensitivity.  
-# - For DBSCAN, tune eps and min_samples carefully.  
-# - HDBSCAN (if available) can find clusters with varying density and label noise (-1).
-# """)
-
-# # synthetic_experiments.py
-# from sklearn.datasets import make_blobs, make_moons
-# import matplotlib.pyplot as plt
-
-# # Example: vary cluster_std for make_blobs
-# for std in [0.2, 0.5, 1.0, 2.0]:
-#     X, y = make_blobs(n_samples=1000, centers=4, cluster_std=std, random_state=42)
-#     plt.figure(figsize=(4,4))
-#     plt.scatter(X[:,0], X[:,1], c=y, s=5)
-#     plt.title(f"make_blobs cluster_std={std}")
-#     plt.show()
-
-# # make_moons: vary noise
-# for noise in [0.01, 0.05, 0.1, 0.2]:
-#     X, y = make_moons(n_samples=1000, noise=noise, random_state=42)
-#     plt.figure(figsize=(4,4))
-#     plt.scatter(X[:,0], X[:,1], c=y, s=5)
-#     plt.title(f"make_moons noise={noise}")
-#     plt.show()
